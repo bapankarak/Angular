@@ -43,14 +43,11 @@ export class SubscriptionDataService {
     },
   ];
 
-  public getSubscriptions(): Observable<Subscription[]> {
-    // if (this.getUserId()) {
-    //   return of(
-    //     this.subscriptions.filter((sub) => {
-    //       return sub.userId == this.selectedUserId;
-    //     })
-    //   );
-    // }
+  public getSubscriptions(userID:string=''): Observable<Subscription[]> {
+    console.log('testSubscriptions')
+    if(userID){
+      return of(this.subscriptions.filter(item=>{return item.userId === userID}))
+    }
     return of(this.subscriptions);
   }
 }
